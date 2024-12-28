@@ -11,6 +11,8 @@ import { FooterComponent } from './AdminInterface/footer/footer.component';
 import { AllTemplateComponent } from './AdminInterface/all-template/all-template.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CourseManagementComponent } from './AdminInterface/course-management/course-management.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,13 @@ import { CourseManagementComponent } from './AdminInterface/course-management/co
     LayoutComponent,
     CourseManagementComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule,
+    ReactiveFormsModule, // Add ReactiveFormsModule here
+    HttpClientModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

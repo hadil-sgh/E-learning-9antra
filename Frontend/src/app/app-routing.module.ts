@@ -6,7 +6,8 @@ import { AllTemplateComponent } from './AdminInterface/all-template/all-template
 const routes: Routes = [
   { path: 'layout',
      component: LayoutComponent },
-  { path: 'Admin', component: AllTemplateComponent },
+  { path: 'admin', component: AllTemplateComponent },
+  { path: 'admin/courses', component: AllTemplateComponent },
 ];
 
 @NgModule({

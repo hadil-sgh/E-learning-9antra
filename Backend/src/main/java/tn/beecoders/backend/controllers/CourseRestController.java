@@ -12,7 +12,6 @@ import tn.beecoders.backend.services.ICourseServices;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/Courses")
 @AllArgsConstructor
@@ -28,16 +27,15 @@ public class CourseRestController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             Course course = objectMapper.readValue(courseJson, Course.class);
-            Course course1 = courseServices.addCourses(course, image);
-            return new ResponseEntity<>(course1, HttpStatus.CREATED);
+            Course createdCourse = courseServices.addCourses(course, image);
+            return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
         } catch (Exception exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @PutMapping("/update/{course_id}")
-    public Course updateCourse(
+    public ResponseEntity<?> updateCourse(
             @PathVariable("course_id") Long id,
             @RequestPart(value = "course", required = false) String courseJson,
             @RequestPart(value = "image", required = false) MultipartFile image
@@ -54,12 +52,12 @@ public class CourseRestController {
                 courseFromId.setImage(image.getBytes());
             }
 
-            return courseServices.updateCourses(courseFromId);
+            Course updated = courseServices.updateCourses(courseFromId);
+            return new ResponseEntity<>(updated, HttpStatus.OK);
         } catch (Exception e) {
-            throw new RuntimeException("Error updating the course", e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     @GetMapping("/all")
     public ResponseEntity<?> fetchAllCourses() {
@@ -72,9 +70,8 @@ public class CourseRestController {
     }
 
     @DeleteMapping("/delete/{course_id}")
-    public void deleteCourse(@PathVariable("course_id") Long id) {
+    public ResponseEntity<Void> deleteCourse(@PathVariable("course_id") Long id) {
         courseServices.deleteCourses(id);
+        return ResponseEntity.noContent().build();  // 204 No Content status
     }
-
-
 }

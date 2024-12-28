@@ -1,7 +1,7 @@
-export class course {
-  id!:number;
-  title!:string;
-  description!:string;
-  price!:number;
-  image!:
+export class Course {
+  id?: number;
+  title: string = '';
+  description: string = '';
+  price: number = 0;
+  image?: File | null = null;
 }
