@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import tn.beecoders.backend.entities.Course;
 import tn.beecoders.backend.services.ICourseServices;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -57,7 +56,7 @@ public class CourseRestController {
 
             return courseServices.updateCourses(courseFromId);
         } catch (Exception e) {
-            throw new RuntimeException("Error", e);
+            throw new RuntimeException("Error updating the course", e);
         }
     }
 
