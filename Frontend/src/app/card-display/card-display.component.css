@@ -1,68 +1,89 @@
-.body {
+ .body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
   }
-  
+
+  .discover {
+    font-size: 4em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+
   .courses-section {
     text-align: center;
     padding: 20px;
   }
-  
+
   .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    margin-bottom: 20px;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 60px;
   }
-  
+
   .courses-section h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
   }
-  
+
   .view-more-btn {
     background-color: #c40059;
     color: white;
     border: none;
     border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 20px 30px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
     margin-bottom: 20px;
   }
-  
+
   .courses-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 2mm; 
+    gap: 20px; 
   }
-  
+
   .course-card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 500px; 
     text-align: center;
-    padding: 30px; 
+    padding: 20px;
     transition: transform 0.3s ease;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .course-card img {
-    max-width: 100%;
+    width: 100%;
+    height: auto; 
     border-radius: 8px;
     margin-bottom: 15px;
   }
-  
+
   .course-card h2 {
-    font-size: 1.5em; 
+    font-size: 1.5em;
     margin: 10px 0;
+    font-weight: bold;
   }
-  
+
+  .price-and-title {
+    display: flex;
+    justify-content: space-between; /* Distributes title and price evenly */
+    width: 100%; /* Ensures the width covers the entire card */
+    margin-bottom: 10px;
+  }
+
   .course-card p {
     font-size: 1.2em;
     color: #c40059;
     font-weight: bold;
   }
-  

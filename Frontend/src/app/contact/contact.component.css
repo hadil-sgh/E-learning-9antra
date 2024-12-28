@@ -9,9 +9,9 @@
 .contact-container {
   background-color: #fcb257;
   border-radius: 50px; /* Increased curve for matching style */
-  padding: 40px 50px;
+  padding: 50px 50px;
   width: 80%;
-  max-width: 650px; /* Slightly wider for larger forms */
+  max-width: 1000px; /* Slightly wider for larger forms */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
   text-align: center;
 }
@@ -26,14 +26,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: flex-start; /* Align items to the left */
 }
 
 .contact-form label {
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 1.2em; /* Increased font size for labels */
   margin-bottom: 5px;
   text-align: left;
   color: #000;
+  width: 100%;
 }
 
 .contact-form input,
@@ -61,11 +63,14 @@
   border-radius: 20px; /* Rounded corners */
   color: #fff;
   border: none;
+  width: auto; /* Makes sure the button's width is based on content */
   padding: 10px 20px;
-  font-size: 1em;
+  font-weight: bold;
+  font-size: 20px;
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+  align-self: center; /* Center the button */
 }
 
 .contact-form button:hover {
