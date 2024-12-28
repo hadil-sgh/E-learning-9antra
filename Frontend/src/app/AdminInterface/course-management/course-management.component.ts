@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
@@ -14,7 +13,7 @@ export class CourseManagementComponent implements OnInit {
   course: Course = new Course();
   selectedImage: File | null = null;
   editMode: boolean = false;
-  courseIdToEdit: number | null = null; // Explicitly typed as `number | null`
+  courseIdToEdit: number | null = null;
 
   constructor(private courseService: CourseService, private router: Router) {}
 
@@ -39,7 +38,6 @@ export class CourseManagementComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editMode && this.courseIdToEdit !== null) {
-      // Handle update operation
       this.courseService
         .updateCourse(this.courseIdToEdit, this.course, this.selectedImage)
         .subscribe(
@@ -52,8 +50,7 @@ export class CourseManagementComponent implements OnInit {
           }
         );
     } else {
-      // Handle add operation
-      if (this.selectedImage) {  // Ensure image is selected before submitting
+      if (this.selectedImage) {
         this.courseService.addCourse(this.course, this.selectedImage).subscribe(
           (newCourse) => {
             this.loadCourses();
@@ -68,12 +65,12 @@ export class CourseManagementComponent implements OnInit {
       }
     }
   }
-
-  // editCourse(course: Course): void {
-  //   this.course = { ...course };  // Spread to avoid mutation of the original object
-  //   this.courseIdToEdit = course.id; // Ensure the id is assigned
-  //   this.editMode = true;
-  // }
+  editCourse(course: Course): void {
+    this.course = { ...course }; // Create a copy of the course object
+    this.courseIdToEdit = course.id ?? null; // Handle undefined case
+    this.editMode = true; // Enable edit mode
+  }
+  
 
   deleteCourse(courseId: number): void {
     this.courseService.deleteCourse(courseId).subscribe(
@@ -90,6 +87,6 @@ export class CourseManagementComponent implements OnInit {
     this.course = new Course();
     this.selectedImage = null;
     this.editMode = false;
-    this.courseIdToEdit = null; // Reset to null after form submission
+    this.courseIdToEdit = null;
   }
 }
