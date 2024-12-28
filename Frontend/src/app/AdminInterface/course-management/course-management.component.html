@@ -74,12 +74,15 @@
               <h5 class="card-title">{{ course.title }}</h5>
               <p class="card-text">{{ course.description }}</p>
               <p class="card-text">{{ course.price | currency }}</p>
-                <button (click)="deleteCourse(course.id!)" class="btn btn-danger btn-sm">
+              <div class="d-flex justify-content-center">
+                <button (click)="deleteCourse(course.id!)" class="btn btn-danger btn-sm me-2">
                   Delete
                 </button>
-                <button (click)="editCourse(course)" class="btn btn-primary ">
-                    Edit
-                  </button>
+                <button (click)="editCourse(course)" class="btn btn-primary btn-sm">
+                  Edit
+                </button>
+              </div>
+              
             </div>
           </div>
         </div>
